@@ -60,7 +60,7 @@ export default defineNuxtConfig({
         moduleOptions: {
       /* nuxt-vuetify module options */
       styles: {
-        configFile: 'assets/scss/vuetify.scss',
+        configFile: '@/assets/scss/vuetify.scss',
       }
     },
     vuetifyOptions: {
