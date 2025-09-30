@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  css: ['~/assets/css/globals.scss'],
+  // css: ['~/assets/css/globals.scss'],
   modules: [
     '@nuxt/fonts',
     '@nuxt/icon',
@@ -57,6 +57,12 @@ export default defineNuxtConfig({
     ]
   },
   vuetify: {
+        moduleOptions: {
+      /* nuxt-vuetify module options */
+      styles: {
+        configFile: 'assets/scss/vuetify.scss',
+      }
+    },
     vuetifyOptions: {
       theme: {
         dark: false,

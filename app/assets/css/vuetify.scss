@@ -1,0 +1,7 @@
+@forward 'vuetify/settings' with (
+  $body-font-family: 'Arsenal',
+  $color-pack: false,
+  // Add any other Vuetify SASS variables you want to override here
+  // For example:
+  // $font-size-root: 14px,
+);
