@@ -38,5 +38,9 @@
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.13",
     "sass-embedded": "^1.93.2"
+  },
+  "engines": {
+    "node": "22.9.0",
+    "npm": "11.6.1"
   }
 }
