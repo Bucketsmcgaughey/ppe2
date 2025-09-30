@@ -66,7 +66,8 @@ export default defineNuxtConfig({
       disableVuetifyStyles: true,
       styles: {
         configFile: '@/assets/css/components.scss'
-      },
+      }
+    },
     vuetifyOptions: {
       theme: {
         dark: false,
@@ -79,7 +80,6 @@ export default defineNuxtConfig({
         }
       }
       }
-
     },
   },
 })
