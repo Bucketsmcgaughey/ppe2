@@ -1,6 +1,2 @@
-@use "~vuetify/settings" with (
-  $body-font-family: 'Arsenal',
-  $color-pack: false
-);
-
-@use "~vuetify/styles";
+@use "vuetify/styles";
+@use "./vuetify-settings";
