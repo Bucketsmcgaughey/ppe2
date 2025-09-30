@@ -79,8 +79,6 @@ export default defineNuxtConfig({
     css: {
       preprocessorOptions: {
         scss: {
-          // Let @use 'vuetify' resolve correctly
-          additionalData: `@use "vuetify/styles" as *;`,
           includePaths: ["./node_modules"],
         },
       },
