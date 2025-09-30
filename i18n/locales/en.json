@@ -1,0 +1,38 @@
+{
+    "WELCOME": "Welcome",
+    "SIGN_IN": "Sign in",
+    "SIGN_UP": "Sign up",
+    "SIGN_UP_BENEFITS": "Sign up now so that you can find your parcels, and help your neighbours find theirs!",
+    "YOUR_EMAIL_ADDRESS": "Email address",
+    "YOUR_PASSWORD": "Password",
+    "CONFIRM_PASSWORD": "Repeat password",
+    "REMEMBER_ME": "Keep me signed in",
+    "YOUR_FULL_NAME": "First name and surname",
+    "SIGNING_IN": "Signing in...",
+    "FORGOT_YOUR_PASSWORD": "Forgotten your password?",
+    "SIGN_OUT": "Sign out",
+    "YOUR_PARCELS": "Your parcels",
+    "GOT_A_PARCEL": "Got a parcel for somebody?",
+    "GOT_A_PARCEL_PARA": "Just select their name below and we'll notify them.",
+    "NO_PARCELS_FOR_YOU": {
+        "heading": "Nobody has any parcels for you at the moment.",
+        "subheading": "As soon as it turns up you'll see it here."
+    },
+    "FIND_A_NEIGHBOUR": "Find a neighbour",
+    "PARCEL_NOTES": "Information for the recipient",
+    "YOUR_DETAILS": "Your details",
+    "DATUM": "Date",
+    "HAUSNUMMER": "Door number",
+    "ETAGE": "Floor",
+    "KLINGEL": "Name on doorbell",
+    "UPDATE": "Update",
+    "$vuetify": {
+        "stepper": {
+            "next": "Next",
+            "prev": "Back"
+        },
+        "open": "Open",
+        "close": "Schließen",
+        "noDataText": "No data"
+    }
+}
