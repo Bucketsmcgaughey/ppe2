@@ -60,7 +60,7 @@ export default defineNuxtConfig({
         moduleOptions: {
       /* nuxt-vuetify module options */
       styles: {
-        configFile: '@/assets/scss/vuetify.scss',
+        configFile: 'assets/scss/vuetify.scss',
       }
     },
     vuetifyOptions: {
@@ -77,5 +77,15 @@ export default defineNuxtConfig({
       }
 
     },
-  }
+  },
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          // This is the magic line
+          includePaths: [resolve(__dirname, './node_modules')],
+        },
+      },
+    },
+  },
 })
