@@ -60,6 +60,13 @@ export default defineNuxtConfig({
     ]
   },
   vuetify: {
+    moduleOptions: {
+      /* module specific options */
+      /* https://www.youtube.com/watch?v=aamWg1TuC3o */
+      disableVuetifyStyles: true,
+      styles: {
+        configFile: '@/assets/css/components.scss'
+      },
     vuetifyOptions: {
       theme: {
         dark: false,
@@ -73,15 +80,6 @@ export default defineNuxtConfig({
       }
       }
 
-    },
-  },
-    vite: {
-    css: {
-      preprocessorOptions: {
-        scss: {
-          includePaths: ["./node_modules"],
-        },
-      },
     },
   },
 })
