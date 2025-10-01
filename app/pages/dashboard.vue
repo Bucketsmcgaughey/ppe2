@@ -2,9 +2,14 @@
 import { v4 as uuidv4 } from 'uuid'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
+import 'dayjs/locale/de'
+import 'dayjs/locale/en'
+
 dayjs.extend(relativeTime)
 
 const { user, initializeUser, isAuthenticated } = useAuthentication()
+const { localeProperties } = useI18n()
+dayjs.locale(localeProperties.value.code)
 initializeUser()
 const updated = ref(false)
 const submitted = ref(false)
@@ -52,7 +57,18 @@ async function getParcelData() {
   if (parcels.value && parcels.value.length > 0) {
     for (let parcel of parcels.value) {
       const holder = residents.value.find((resident) => resident.email = parcel.current_holder)
-      parcel.current_holder = holder
+      if (holder) {
+        parcel.current_holder = holder
+      } else {
+        parcel.current_holder = {
+          id: uuidv4(),
+          email: "",
+          surname: "",
+          hausnummer: "",
+          floor: "",
+          klingel: ""
+        }
+      }
     }
   }
   return parcels.value
@@ -153,21 +169,24 @@ async function parcelCollected(id) {
         <p class="text-h5 py-4">{{ $t('YOUR_PARCELS') }}</p>
         <v-card v-if="myParcels && myParcels.length > 0">
           <v-list>
-            <v-list-item :key="parcel.id" v-for="parcel in myParcels" lines="three" v-if="parcel.current_holder">
+            <v-list-item :key="parcel.id" v-for="parcel in myParcels" lines="three">
               <template #prepend>
                 <v-avatar><v-icon>mdi-package-variant-closed</v-icon></v-avatar>
               </template>
               <template #append><v-btn variant="tonal" @click="parcelCollected(parcel.id)"
                   :loading="collectingParcel">{{ $t('GOT_IT') }}</v-btn>
               </template>
-              <v-list-item-title class="text-body-1" v-if="parcel.current_holder.surname">
-                {{ parcel.current_holder.surname }}
+              <v-list-item-title class="text-body-1">
+                {{ parcel.current_holder.surname ? parcel.current_holder.surname : $t('NO_INFO') }}
               </v-list-item-title>
-              <v-list-item-title>
+              <v-list-item-title v-if="parcel.current_holder.hausnummer">
                 {{ parcel.current_holder.hausnummer }}, {{ parcel.current_holder.klingel }}
               </v-list-item-title>
+              <v-list-item-title v-else>{{ $t('NO_INFO') }}</v-list-item-title>
               <v-list-item-subtitle v-if="parcel.notes">{{ parcel.notes }}</v-list-item-subtitle>
-              <v-list-item-subtitle>{{ dayjs(parcel.date_created).fromNow() }}</v-list-item-subtitle>
+              <v-list-item-subtitle>
+                {{ dayjs(parcel.date_created).fromNow() }}
+              </v-list-item-subtitle>
             </v-list-item>
           </v-list>
         </v-card>
@@ -189,10 +208,15 @@ async function parcelCollected(id) {
             <v-btn color="primary" label="Submit" text="Submit" @click="submitParcel()" :loading="loading" />
           </v-row>
           <v-row class="pa-2">
-            <v-alert v-if="submitted" icon="mdi-check-circle" color="success">{{ $t('PARCEL_SUBMITTED_THANK_YOU')
-              }}</v-alert>
-            <v-alert v-if="submissionError" icon="mdi-alert-circle" color="error" class="px-2">{{
-              $t('PARCEL_SUBMISSION_ERROR') }}</v-alert>
+            <v-fab-transition>
+              <v-alert v-if="submitted" icon="mdi-check-circle" color="success">{{ $t('PARCEL_SUBMITTED_THANK_YOU')
+                }}</v-alert>
+            </v-fab-transition>
+            <v-fab-transition>
+              <v-alert v-if="submissionError" icon="mdi-alert-circle" color="error" class="px-2">{{
+                $t('PARCEL_SUBMISSION_ERROR') }}</v-alert>
+            </v-fab-transition>
+
 
           </v-row>
         </v-card>

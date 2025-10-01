@@ -10,11 +10,13 @@
         <v-text-field variant="outlined" v-model="resident.hausnummer" label="Hausnummer"></v-text-field>
         <v-text-field variant="outlined" v-model="resident.floor" label="Etage"></v-text-field>
         <v-text-field variant="outlined" v-model="resident.klingel" label="Klingel"></v-text-field>
-        <v-btn block @click="updateResident" color="primary">{{ $t('UPDATE') }}</v-btn>
+        <v-btn block @click="updateResident" color="primary" :loading="loading">{{ $t('UPDATE') }}</v-btn>
       </v-form>
-      <v-alert v-if="updated" icon="mdi-alert-circle" color="success" class="px-2">
-        {{ $t('UPDATE_SUCCESSFUL') }}
-      </v-alert>
+      <v-fab-transition>
+        <v-alert v-if="updated" icon="mdi-alert-circle" color="success" class="mx-4">
+          {{ $t('UPDATE_SUCCESSFUL') }}
+        </v-alert>
+      </v-fab-transition>
       <div class="pa-2">
         <LogoutLink />
       </div>
@@ -32,6 +34,7 @@ const profile = useProfile()
 const resident = ref(null)
 const { smAndUp, mobile } = useDisplay()
 const updated = ref(false)
+const loading = ref(false)
 // const props = defineProps({
 //   welcome: Boolean
 // })
@@ -64,6 +67,7 @@ async function getResidentData() {
 }
 
 async function updateResident() {
+  loading.value = true
   let result = {}
   if (resident.value.email) {
     result = await $fetch('/api/residents', {
@@ -89,9 +93,9 @@ async function updateResident() {
       }
     })
   }
-  console.log(result)
   resident.value = result
   updated.value = true
+  loading.value = false
   setTimeout(() => {
     updated.value = false
   }, "3000");

@@ -29,6 +29,7 @@
     "HAUSNUMMER": "Hausnr.",
     "ETAGE": "Etage",
     "KLINGEL": "Klingel",
+    "NO_INFO": "Keine Infos",
     "UPDATE": "Aktualisieren",
     "UPDATE_SUCCESSFUL": "Kontodaten aktualisiert.",
     "$vuetify": {

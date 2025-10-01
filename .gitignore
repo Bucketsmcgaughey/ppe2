@@ -24,4 +24,8 @@ logs
 !.env.example
 
 #databases
-/app/data/
+data/
+data/users.sqlite3
+data/ppe.db-shm
+data/ppe.db-wal
+data/users.sqlite3

@@ -29,6 +29,7 @@
     "HAUSNUMMER": "Door number",
     "ETAGE": "Floor",
     "KLINGEL": "Doorbell",
+    "NO_INFO": "No information",
     "UPDATE": "Update",
     "UPDATE_SUCCESSFUL": "Account updated.",
     "$vuetify": {
