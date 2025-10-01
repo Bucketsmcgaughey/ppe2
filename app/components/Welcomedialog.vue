@@ -1,9 +1,9 @@
 <template>
-  <v-dialog v-model="showWelcomeDialog">
+  <v-dialog v-model="showWelcomeDialog" persistent v-if="!resident">
     <v-card class="mx-auto" width="500">
       <v-card-title class="text-h4 text-center">{{ $t('WELCOME') }}!</v-card-title>
       <v-card-text>
-        <p>Let's set up your account.</p>
+        <p>{{ $t('SET_UP_ACCOUNT') }}</p>
         <v-form class="pa-4">
           <v-text-field variant="outlined" v-model="resident.surname" label="Name"></v-text-field>
           <v-text-field variant="outlined" v-model="resident.hausnummer" label="Hausnummer"></v-text-field>
@@ -22,6 +22,8 @@ import { v4 as uuidv4 } from 'uuid'
 import { useAuthentication } from '#imports'
 const { user, initializeUser, isAuthenticated } = useAuthentication()
 const updated = ref(false)
+// const showWelcomeDialog = useWelcomeDialog()
+const showWelcomeDialog = true
 onMounted(() => {
   initializeUser()
 })
@@ -36,7 +38,7 @@ async function getResidentData() {
         inclusive: true
       }
     })
-    console.log('Resident', res)
+    // console.log('Resident', res)
     if (!res.value) {
       res.value = {
         surname: user.value.name,
@@ -48,7 +50,6 @@ async function getResidentData() {
     }
     return res.value
   }
-
 }
 
 async function updateResident() {

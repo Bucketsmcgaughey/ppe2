@@ -36,7 +36,7 @@ import { useAuthentication } from '#imports'
 const { login } = useAuthentication()
 const isLoading = ref(false)
 let profile = useProfile()
-console.log('profile', profile)
+// console.log('profile', profile)
 profile.value = false
 
 
@@ -70,7 +70,7 @@ async function createNewUser() {
     role: 'user',
     active: true
   })
-  console.log('New user', newUser)
+  // console.log('New user', newUser)
 }
 
 

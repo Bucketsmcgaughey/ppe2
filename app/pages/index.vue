@@ -44,7 +44,7 @@ const { data: parcels } = await useFetch('/api/parcels', {
 
 const userToEdit = useCloned(user)
 
-console.log(parcels)
+// console.log(parcels)
 
 const { data: users } = await useFetch('/api/nuxt-users')
 

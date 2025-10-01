@@ -1,5 +1,6 @@
 {
     "WELCOME": "Welcome",
+    "SET_UP_ACCOUNT": "Let's set up your account.",
     "SIGN_IN": "Sign in",
     "SIGN_UP": "Sign up",
     "SIGN_UP_BENEFITS": "Sign up now so that you can find your parcels, and help your neighbours find theirs!",
@@ -12,6 +13,7 @@
     "FORGOT_YOUR_PASSWORD": "Forgotten your password?",
     "SIGN_OUT": "Sign out",
     "YOUR_PARCELS": "Your parcels",
+    "GOT_IT": "Got it!",
     "GOT_A_PARCEL": "Got a parcel for somebody?",
     "GOT_A_PARCEL_PARA": "Just select their name below and we'll notify them.",
     "NO_PARCELS_FOR_YOU": {
@@ -20,11 +22,13 @@
     },
     "FIND_A_NEIGHBOUR": "Find a neighbour",
     "PARCEL_NOTES": "Information for the recipient",
+    "PARCEL_SUBMITTED_THANK_YOU": "Thanks! We'll let your neighbour know you have their parcel",
+    "PARCEL_SUBMISSION_ERROR": "Oops! Something has gone wrong. Sorry about that. Please try again.",
     "YOUR_DETAILS": "Your details",
     "DATUM": "Date",
     "HAUSNUMMER": "Door number",
     "ETAGE": "Floor",
-    "KLINGEL": "Name on doorbell",
+    "KLINGEL": "Doorbell",
     "UPDATE": "Update",
     "$vuetify": {
         "stepper": {

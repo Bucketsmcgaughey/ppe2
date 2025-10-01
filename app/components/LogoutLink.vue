@@ -77,11 +77,13 @@ const handleLogout = async (event: Event) => {
 </script>
 
 <template>
-  <div class="px-2" :class="['n-users-logout-container', props.containerClass]" :style="props.containerStyle">
+  <div class="px-2">
+    <!-- <div class="px-2" :class="['n-users-logout-container', props.containerClass]" :style="props.containerStyle"> -->
     <div v-if="error" :class="['n-users-error-message', props.errorClass]" :style="props.errorStyle">
       {{ error }}
     </div>
-    <v-btn block class="pa-2" variant="tonal" :disabled="isLoading" @click="handleLogout">
+    <v-divider thickness="2"></v-divider>
+    <v-btn block class="px-2 py-4" variant="tonal" :disabled="isLoading" @click="handleLogout">
       <span v-if="isLoading">Signing out...</span>
       <span v-else>{{ $t('SIGN_OUT') }}</span>
     </v-btn>

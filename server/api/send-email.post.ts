@@ -23,7 +23,7 @@ export default defineEventHandler(async (event) => {
       html: message,
     });
 
-    console.log({ data });
+    // console.log({ data });
     return { message: 'Email sent successfully!', data };
 
   } catch (error) {

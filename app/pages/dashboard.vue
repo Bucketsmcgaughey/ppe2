@@ -7,6 +7,9 @@ dayjs.extend(relativeTime)
 const { user, initializeUser, isAuthenticated } = useAuthentication()
 initializeUser()
 const updated = ref(false)
+const submitted = ref(false)
+const submissionError = ref(false)
+const loading = ref(false)
 const recipient = ref()
 const notes = ref("")
 let collectingParcel = ref(false)
@@ -46,7 +49,6 @@ async function getParcelData() {
       is_collected_yet: false
     }
   })
-  // console.log('got parcels', parcels.value)
   if (parcels.value && parcels.value.length > 0) {
     for (let parcel of parcels.value) {
       const holder = residents.value.find((resident) => resident.email = parcel.current_holder)
@@ -63,7 +65,6 @@ async function updateParcelData() {
       is_collected_yet: false
     }
   })
-  // console.log('updated parcels', parcels)
   if (parcels && parcels.length > 0) {
     for (let parcel of parcels) {
       const holder = residents.value.find((resident) => resident.email = parcel.current_holder)
@@ -74,7 +75,7 @@ async function updateParcelData() {
 }
 
 async function submitParcel() {
-  // console.log('recipient', recipient.value)
+  loading.value = true
   const result = await $fetch('/api/parcels', {
     method: 'POST',
     body: {
@@ -82,10 +83,15 @@ async function submitParcel() {
       intended_recipient: recipient.value,
       current_holder: user.value.email,
       is_collected_yet: 'false',
-      // notes: notes.value
+      notes: notes.value
     }
   })
-  // console.log('Parcel submitted', result)
+  if (result === true) {
+    submitted.value = true
+  } else {
+    submissionError.value = true
+  }
+  loading.value = false
 }
 
 async function updateResident() {
@@ -141,33 +147,27 @@ async function parcelCollected(id) {
     <v-row>
       <v-col cols="12" md="2"></v-col>
       <v-col cols="12" md="8">
-        <p class="text-h4 py-4">{{ $t('YOUR_PARCELS') }}</p>
+        <p class="text-h5 py-4">{{ $t('YOUR_PARCELS') }}</p>
         <v-card v-if="myParcels && myParcels.length > 0">
-          <v-table>
-            <thead>
-              <tr>
-                <th>{{ $t('DATUM') }}</th>
-                <th>{{ $t('HAUSNUMMER') }}</th>
-                <th>{{ $t('ETAGE') }}</th>
-                <th>{{ $t('KLINGEL') }}</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="parcel in myParcels">
-                <td>{{ dayjs(parcel.date_created).fromNow() }}</td>
-                <td>{{ parcel.current_holder.hausnummer }}</td>
-                <td>{{ parcel.current_holder.floor }}</td>
-                <td>{{ parcel.current_holder.klingel }}</td>
-                <td><v-btn variant="tonal" class="py-2" @click="parcelCollected(parcel.id)"
-                    :loading="collectingParcel">Got it!</v-btn></td>
-              </tr>
-            </tbody>
-          </v-table>
+          <v-list>
+            <v-list-item :key="parcel.id" v-for="parcel in myParcels" lines="three">
+              <template #prepend>
+                <v-avatar><v-icon>mdi-package-variant-closed</v-icon></v-avatar>
+              </template>
+              <template #append><v-btn variant="tonal" @click="parcelCollected(parcel.id)"
+                  :loading="collectingParcel">{{ $t('GOT_IT') }}</v-btn>
+              </template>
+              <v-list-item-title class="text-body-1">{{ parcel.current_holder.surname
+              }}</v-list-item-title><v-list-item-title> {{
+                  parcel.current_holder.hausnummer }}, {{
+                  parcel.current_holder.klingel }}</v-list-item-title>
+              <v-list-item-subtitle>{{ dayjs(parcel.date_created).fromNow() }}</v-list-item-subtitle>
+            </v-list-item>
+          </v-list>
         </v-card>
         <v-card v-else><v-empty-state headline="Sorry!" :title="$t('NO_PARCELS_FOR_YOU.heading')"
             :text="$t('NO_PARCELS_FOR_YOU.subheading')" /></v-card>
-        <div class="text-h4 pt-4 pb-2">{{ $t('GOT_A_PARCEL') }}</div>
+        <div class="text-h5 pt-4 pb-2">{{ $t('GOT_A_PARCEL') }}</div>
         <p class="pb-4">{{ $t('GOT_A_PARCEL_PARA') }}</p>
 
         <v-card class="pa-4">
@@ -180,13 +180,21 @@ async function parcelCollected(id) {
           </v-row>
           <v-row class="px-4 pb-4">
             <v-spacer />
-            <v-btn color="primary" label="Submit" text="Submit" @click="submitParcel()" />
+            <v-btn color="primary" label="Submit" text="Submit" @click="submitParcel()" :loading="loading" />
+          </v-row>
+          <v-row class="pa-2">
+            <v-alert v-if="submitted" icon="mdi-check-circle" color="success">{{ $t('PARCEL_SUBMITTED_THANK_YOU')
+              }}</v-alert>
+            <v-alert v-if="submissionError" icon="mdi-alert-circle" color="error">{{
+              $t('PARCEL_SUBMISSION_ERROR') }}</v-alert>
+
           </v-row>
         </v-card>
       </v-col>
       <v-col cols="12" md="2"></v-col>
     </v-row>
     <ProfilePanel />
+    <WelcomeDialog />
   </v-container>
 
 

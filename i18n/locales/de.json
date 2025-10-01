@@ -1,5 +1,6 @@
 {
     "WELCOME": "Willkommen",
+    "SET_UP_ACCOUNT": "Richten wir dein Konto ein.",
     "SIGN_IN": "Anmelden",
     "SIGN_UP": "Registrieren",
     "SIGN_UP_BENEFITS": "Jetzt registrieren, Pakete finden und Nachbarn helfen, ihre Pakete zu finden!",
@@ -12,6 +13,7 @@
     "FORGOT_YOUR_PASSWORD": "Passwort vergessen?",
     "SIGN_OUT": "Abmelden",
     "YOUR_PARCELS": "Deine Pakete",
+    "GOT_IT": "Abgeholt!",
     "GOT_A_PARCEL": "Hast du ein Paket für jemanden?",
     "GOT_A_PARCEL_PARA": "Einfach den Namen wählen, wir geben bescheid.",
     "NO_PARCELS_FOR_YOU": {
@@ -20,9 +22,11 @@
     },
     "FIND_A_NEIGHBOUR": "Nachbar finden",
     "PARCEL_NOTES": "Infos für Empfänger (optional)",
+    "PARCEL_SUBMITTED_THANK_YOU": "Danke! Wir geben dem Nachbarn bescheid, dass du das Paket hast.",
+    "PARCEL_SUBMISSION_ERROR": "Ups! Etwas ist schief gegangen. Bitte erneut versuchen",
     "YOUR_DETAILS": "Deine Infos",
     "DATUM": "Datum",
-    "HAUSNUMMER": "Hausnummer",
+    "HAUSNUMMER": "Hausnr.",
     "ETAGE": "Etage",
     "KLINGEL": "Klingel",
     "UPDATE": "Aktualisieren",

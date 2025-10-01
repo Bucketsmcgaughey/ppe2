@@ -24,21 +24,12 @@ const { data, error } = await resend.emails.send({
   from: 'Prenzlbogen Parcel Exchange <pakete@prenzlbogies.de>',
   to: parcel.intended_recipient,
   subject: 'Your neighbour has a parcel for you',
-  html: "<p>Hello,</p><p>Your neighbour has a parcel for you. Log into Prenzlbogen Parcel Exchange for more details.</p><p>Please DO NOT respond to this email.</p>", // HTML body
+  html: `<p>Hallo,</p><p>Dein Nachbar hat ein Paket für dich. bei <a href="https://pakete.prenzlbogies.de">Prenzlbogen Pakete</a> anmelden, um weitere Informationen zu erhalten.</p><p> Bitte diese E-Mail NICHT beantworten, da diese Adresse keine Nachrichten empfangen kann.</p><p>Hello,</p><p>Your neighbour has a parcel for you. Log into <a href="https://pakete.prenzlbogies.de">Prenzlbogen Pakete</a> for more details.</p><p>Please DO NOT reply to this email, as this address cannot receive messages.</p>`, // HTML body
 })
 
   if (error) {
     return console.error({ error })
   }
-
-  console.log({ data })
-// await transporter.sendMail({
-//     from: '"Prenzlbogen Parcel Exchange" <neil.calderwood@gmail.com>',
-//     to: "parcel.intended_recipient",
-//     subject: "Your neighbour has a parcel for you!",
-//     text: "Hello, your neighbour has a parcel for you. Log into Prenzlbogen Parcel Exchange for more details. Please DO NOT respond to this email.", // plain‑text body
-//     html: "<p>Hello,</p><p>Your neighbour has a parcel for you. Log into Prenzlbogen Parcel Exchange for more details.</p><p>Please DO NOT respond to this email.</p>", // HTML body
-//   });
-
-  return {}
+  
+  return true
 })

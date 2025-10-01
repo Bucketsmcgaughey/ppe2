@@ -1,25 +1,23 @@
 <template>
-  <div>
-    <v-dialog v-model="profile" v-if="resident">
-      <v-card class="mx-auto" :min-width="smAndUp ? '500px' : '100%'" :max-width="smAndUp ? '500px' : '100%'">
-        <v-toolbar>
-          <div class="text-h5 pa-4">{{ $t('YOUR_DETAILS') }}</div><v-spacer />
-          <v-btn @click="profile = false"><v-icon>mdi-close-circle-outline</v-icon></v-btn>
-        </v-toolbar>
-        <v-form class="pa-4">
-          <v-text-field variant="outlined" v-model="resident.surname" label="Name"></v-text-field>
-          <v-text-field variant="outlined" v-model="resident.hausnummer" label="Hausnummer"></v-text-field>
-          <v-text-field variant="outlined" v-model="resident.floor" label="Etage"></v-text-field>
-          <v-text-field variant="outlined" v-model="resident.klingel" label="Klingel"></v-text-field>
-          <v-btn @click="updateResident" color="primary">{{ $t('UPDATE') }}</v-btn>
-        </v-form>
-        <!-- <div v-if="updated">Successfully updated.</div> -->
-        <div class="pa-2">
-          <LogoutLink />
-        </div>
-      </v-card>
-    </v-dialog>
-  </div>
+  <v-dialog v-model="profile" v-if="resident">
+    <v-card class="mx-auto" :min-width="smAndUp ? '500px' : '100%'" :max-width="smAndUp ? '500px' : '100%'">
+      <v-toolbar>
+        <div class="text-h5 pa-4">{{ $t('YOUR_DETAILS') }}</div><v-spacer />
+        <v-btn @click="profile = false"><v-icon>mdi-close-circle-outline</v-icon></v-btn>
+      </v-toolbar>
+      <v-form class="pa-4">
+        <v-text-field variant="outlined" v-model="resident.surname" label="Name"></v-text-field>
+        <v-text-field variant="outlined" v-model="resident.hausnummer" label="Hausnummer"></v-text-field>
+        <v-text-field variant="outlined" v-model="resident.floor" label="Etage"></v-text-field>
+        <v-text-field variant="outlined" v-model="resident.klingel" label="Klingel"></v-text-field>
+        <v-btn block @click="updateResident" color="primary">{{ $t('UPDATE') }}</v-btn>
+      </v-form>
+      <!-- <div v-if="updated">Successfully updated.</div> -->
+      <div class="pa-2">
+        <LogoutLink />
+      </div>
+    </v-card>
+  </v-dialog>
 </template>
 
 <script setup>
@@ -31,6 +29,9 @@ const { user, initializeUser, isAuthenticated } = useAuthentication()
 const profile = useProfile()
 const resident = ref(null)
 const { smAndUp, mobile } = useDisplay()
+// const props = defineProps({
+//   welcome: Boolean
+// })
 onMounted(() => {
   initializeUser()
 })
