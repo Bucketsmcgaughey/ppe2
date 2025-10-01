@@ -152,7 +152,6 @@ async function parcelCollected(id) {
       <v-col cols="12" md="8">
         <p class="text-h5 py-4">{{ $t('YOUR_PARCELS') }}</p>
         <v-card v-if="myParcels && myParcels.length > 0">
-          <!-- {{ myParcels }} -->
           <v-list>
             <v-list-item :key="parcel.id" v-for="parcel in myParcels" lines="three" v-if="parcel.current_holder">
               <template #prepend>
@@ -191,7 +190,7 @@ async function parcelCollected(id) {
           </v-row>
           <v-row class="pa-2">
             <v-alert v-if="submitted" icon="mdi-check-circle" color="success">{{ $t('PARCEL_SUBMITTED_THANK_YOU')
-              }}</v-alert>
+            }}</v-alert>
             <v-alert v-if="submissionError" icon="mdi-alert-circle" color="error">{{
               $t('PARCEL_SUBMISSION_ERROR') }}</v-alert>
 
