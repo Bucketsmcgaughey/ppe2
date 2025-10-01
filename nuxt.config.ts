@@ -96,5 +96,13 @@ export default defineNuxtConfig({
   fonts: {
     preload: true,
     display: 'swap'
+  },
+    routeRules: {
+    '/login': {
+      swr: true,
+      cache: {
+        maxAge: 31536000
+      }
+    },
   }
 })
