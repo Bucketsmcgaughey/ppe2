@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="showWelcomeDialog" persistent v-if="!resident">
+  <v-dialog v-model="showWelcomeDialog" persistent v-if="!resident.email">
     <v-card class="mx-auto" width="500">
       <v-card-title class="text-h4 text-center">{{ $t('WELCOME') }}!</v-card-title>
       <v-card-text>
