@@ -32,6 +32,10 @@ onMounted(() => {
 </template>
 
 <style>
+.body {
+  font-family: 'Arsenal';
+}
+
 .v-main {
   background-color: #eee;
 }
