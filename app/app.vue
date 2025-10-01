@@ -22,7 +22,9 @@ onMounted(() => {
         :variant="locale.code === localeProperties.code ? 'outlined' : 'plain'">
         {{ locale.code.toUpperCase() }}
       </v-btn>
-      <v-btn flat v-if="isAuthenticated" @click="profile = true"><v-icon>mdi-account</v-icon></v-btn>
+      <v-btn flat v-if="isAuthenticated" @click="profile = true">
+        <v-icon size="5em" icon="mdi-account" />
+      </v-btn>
     </v-app-bar>
     <ProfilePanel />
     <v-main>

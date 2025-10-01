@@ -1,7 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
-import { resolve } from 'path' // <-- THIS LINE IS CRITICAL
-
 export default defineNuxtConfig({
   ssr: true,
   compatibilityDate: '2025-07-15',
@@ -73,6 +71,9 @@ export default defineNuxtConfig({
   },
   vuetify: {
     vuetifyOptions: {
+            icons: {
+        defaultSet: 'mdi'
+      },
       theme: {
         dark: false,
         light: true,
@@ -85,5 +86,11 @@ export default defineNuxtConfig({
       }
       }
     },
-  }
+  },
+    nitro: {
+    compressPublicAssets: {
+      gzip: true,
+      brotli: true
+    }
+  },
 })
