@@ -161,6 +161,7 @@ async function parcelCollected(id) {
               }}</v-list-item-title><v-list-item-title> {{
                   parcel.current_holder.hausnummer }}, {{
                   parcel.current_holder.klingel }}</v-list-item-title>
+              <v-list-item-subtitle v-if="parcel.notes">{{ parcel.notes }}</v-list-item-subtitle>
               <v-list-item-subtitle>{{ dayjs(parcel.date_created).fromNow() }}</v-list-item-subtitle>
             </v-list-item>
           </v-list>
