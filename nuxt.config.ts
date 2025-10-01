@@ -5,6 +5,17 @@ import { resolve } from 'path' // <-- THIS LINE IS CRITICAL
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
+    app: {
+    head: {
+      title: 'Prenzlbogen Pakete', // default fallback title
+      htmlAttrs: {
+        lang: 'en',
+      },
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.svg' },
+      ],
+    },
+  },
   // css: ['~/assets/css/globals.scss'],
   modules: [
     '@nuxt/fonts',
