@@ -12,7 +12,7 @@
         <v-text-field variant="outlined" v-model="resident.klingel" label="Klingel"></v-text-field>
         <v-btn block @click="updateResident" color="primary">{{ $t('UPDATE') }}</v-btn>
       </v-form>
-      <v-alert v-if="updated" icon="mdi-alert-circle" color="success">
+      <v-alert v-if="updated" icon="mdi-alert-circle" color="success" class="px-2">
         {{ $t('UPDATE_SUCCESSFUL') }}
       </v-alert>
       <div class="pa-2">

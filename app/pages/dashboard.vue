@@ -190,8 +190,8 @@ async function parcelCollected(id) {
           </v-row>
           <v-row class="pa-2">
             <v-alert v-if="submitted" icon="mdi-check-circle" color="success">{{ $t('PARCEL_SUBMITTED_THANK_YOU')
-            }}</v-alert>
-            <v-alert v-if="submissionError" icon="mdi-alert-circle" color="error">{{
+              }}</v-alert>
+            <v-alert v-if="submissionError" icon="mdi-alert-circle" color="error" class="px-2">{{
               $t('PARCEL_SUBMISSION_ERROR') }}</v-alert>
 
           </v-row>

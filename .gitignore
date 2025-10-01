@@ -24,4 +24,4 @@ logs
 !.env.example
 
 #databases
-/app/data/*
+/app/data/
