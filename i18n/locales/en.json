@@ -30,6 +30,7 @@
     "ETAGE": "Floor",
     "KLINGEL": "Doorbell",
     "UPDATE": "Update",
+    "UPDATE_SUCCESSFUL": "Account updated.",
     "$vuetify": {
         "stepper": {
             "next": "Next",

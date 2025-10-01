@@ -30,6 +30,7 @@
     "ETAGE": "Etage",
     "KLINGEL": "Klingel",
     "UPDATE": "Aktualisieren",
+    "UPDATE_SUCCESSFUL": "Kontodaten aktualisiert.",
     "$vuetify": {
         "stepper": {
             "next": "Weiter",

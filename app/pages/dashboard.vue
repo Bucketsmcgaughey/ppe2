@@ -88,6 +88,9 @@ async function submitParcel() {
   })
   if (result === true) {
     submitted.value = true
+    setTimeout(() => {
+      submitted.value = false
+    }, "3000");
   } else {
     submissionError.value = true
   }
@@ -149,18 +152,21 @@ async function parcelCollected(id) {
       <v-col cols="12" md="8">
         <p class="text-h5 py-4">{{ $t('YOUR_PARCELS') }}</p>
         <v-card v-if="myParcels && myParcels.length > 0">
+          <!-- {{ myParcels }} -->
           <v-list>
-            <v-list-item :key="parcel.id" v-for="parcel in myParcels" lines="three">
+            <v-list-item :key="parcel.id" v-for="parcel in myParcels" lines="three" v-if="parcel.current_holder">
               <template #prepend>
                 <v-avatar><v-icon>mdi-package-variant-closed</v-icon></v-avatar>
               </template>
               <template #append><v-btn variant="tonal" @click="parcelCollected(parcel.id)"
                   :loading="collectingParcel">{{ $t('GOT_IT') }}</v-btn>
               </template>
-              <v-list-item-title class="text-body-1">{{ parcel.current_holder.surname
-              }}</v-list-item-title><v-list-item-title> {{
-                  parcel.current_holder.hausnummer }}, {{
-                  parcel.current_holder.klingel }}</v-list-item-title>
+              <v-list-item-title class="text-body-1" v-if="parcel.current_holder.surname">
+                {{ parcel.current_holder.surname }}
+              </v-list-item-title>
+              <v-list-item-title>
+                {{ parcel.current_holder.hausnummer }}, {{ parcel.current_holder.klingel }}
+              </v-list-item-title>
               <v-list-item-subtitle v-if="parcel.notes">{{ parcel.notes }}</v-list-item-subtitle>
               <v-list-item-subtitle>{{ dayjs(parcel.date_created).fromNow() }}</v-list-item-subtitle>
             </v-list-item>

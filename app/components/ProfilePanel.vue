@@ -12,7 +12,9 @@
         <v-text-field variant="outlined" v-model="resident.klingel" label="Klingel"></v-text-field>
         <v-btn block @click="updateResident" color="primary">{{ $t('UPDATE') }}</v-btn>
       </v-form>
-      <!-- <div v-if="updated">Successfully updated.</div> -->
+      <v-alert v-if="updated" icon="mdi-alert-circle" color="success">
+        {{ $t('UPDATE_SUCCESSFUL') }}
+      </v-alert>
       <div class="pa-2">
         <LogoutLink />
       </div>
@@ -29,6 +31,7 @@ const { user, initializeUser, isAuthenticated } = useAuthentication()
 const profile = useProfile()
 const resident = ref(null)
 const { smAndUp, mobile } = useDisplay()
+const updated = ref(false)
 // const props = defineProps({
 //   welcome: Boolean
 // })
@@ -86,7 +89,12 @@ async function updateResident() {
       }
     })
   }
+  console.log(result)
   resident.value = result
+  updated.value = true
+  setTimeout(() => {
+    updated.value = false
+  }, "3000");
 }
 
 </script>
