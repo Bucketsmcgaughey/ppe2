@@ -32,7 +32,7 @@ onMounted(() => {
 </template>
 
 <style>
-.body {
+body {
   font-family: 'Arsenal';
 }
 
