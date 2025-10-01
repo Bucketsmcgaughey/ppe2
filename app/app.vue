@@ -1,5 +1,5 @@
 <script setup>
-// import { useAuthentication } from '#imports'
+import { useAuthentication } from '#imports'
 
 const { user, initializeUser, isAuthenticated } = useAuthentication()
 const { locales, setLocale, localeProperties } = useI18n()

@@ -3,6 +3,7 @@
 import { resolve } from 'path' // <-- THIS LINE IS CRITICAL
 
 export default defineNuxtConfig({
+  ssr: true,
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
     app: {
