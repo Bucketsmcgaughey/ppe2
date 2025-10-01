@@ -93,4 +93,8 @@ export default defineNuxtConfig({
       brotli: true
     }
   },
+  fonts: {
+    preload: true,
+    display: 'swap'
+  }
 })
