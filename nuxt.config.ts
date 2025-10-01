@@ -71,7 +71,7 @@ export default defineNuxtConfig({
   },
   vuetify: {
     vuetifyOptions: {
-            icons: {
+      icons: {
         defaultSet: 'mdi'
       },
       theme: {
