@@ -1,6 +1,6 @@
 <template>
   <v-container fill-height>
-    <v-img cover src="/images/bogen.jpg">
+    <v-img cover src="/images/bogen.jpg" alt="Prenzlauer Bogen">
       <v-container fill-height>
         <v-row class="align-items: center">
           <v-col>

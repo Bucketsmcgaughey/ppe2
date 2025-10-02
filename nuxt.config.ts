@@ -90,6 +90,7 @@ export default defineNuxtConfig({
     },
   },
     nitro: {
+      preset: 'node-server',
     compressPublicAssets: {
       gzip: true,
       brotli: true
@@ -106,5 +107,5 @@ export default defineNuxtConfig({
         maxAge: 31536000
       }
     },
-  }
+  },
 })
