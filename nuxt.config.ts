@@ -24,6 +24,8 @@ export default defineNuxtConfig({
     'nuxt-users',
     'vuetify-nuxt-module',
     '@nuxtjs/i18n',
+    '@nuxtjs/critters',
+    'nuxt-purgecss'
   ],
   nuxtUsers: {
     connector: {
